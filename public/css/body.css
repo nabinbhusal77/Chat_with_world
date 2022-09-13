@@ -1,0 +1,115 @@
+body {
+    background-image: url('../img/black-background.jpg') ;
+    background-repeat: repeat-y;
+    background-size: cover;
+
+}
+
+#background-img {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 61px);
+}
+
+
+#signin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(79, 74, 74, 0.5);
+    padding: 20px;
+    box-shadow: 2px 2px 5px;
+}
+
+#signin-form .main-head {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#signin-form form div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+#signin-form form div label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    position: relative;
+    left: 10px;
+    color: whitesmoke;
+    letter-spacing: 1px;
+}
+
+#signin-form form div input {
+    max-width: 300px;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 17px;
+    border: 1px solid var(--blue);
+    background-color: rgba(79, 74, 74, 0.8);
+    color: antiquewhite;
+}
+
+#signin-form form button {
+    display: block;
+    margin: auto;
+    padding: 10px;
+    background-color:  rgba(79, 74, 74, 0.8);
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 18px;
+    border: 2px solid rgb(42, 40, 40);
+    box-shadow: 1px 1px 1px black;
+}
+
+#signin-form form button:hover {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#signin-form form div input:focus {
+    outline: none;
+    border-radius: 20px;
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+
+
+
+    #background-img {
+        text-align: center;
+    }
+
+    #signin-form {
+        margin-top: 20px;
+        display: inline-block;
+        position: inherit;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #background-img {
+        height: calc(100vh - 44px);
+    }
+}
+
+
+/* Error and Success */
+.error {
+    padding: 5px;
+    margin: 3px;
+    background-color: rgba(236, 85, 85, 0.742);
+    text-align: center;
+    color: white;
+}

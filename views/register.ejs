@@ -1,0 +1,64 @@
+<%- include('./partials/header.ejs')%> 
+
+<%- include('./partials/nav.ejs')%> 
+
+<div id="background-img">
+
+    <div class="form" id="signin-form">
+        <div id="create-account-head" class="main-head">
+            <a href="#">CREATE <span>ACCOUNT</span></a>
+        </div>
+        <!-- Show error if there is one -->
+        <% if (locals.error) { %>
+            <p class="error"><%= error %> </p>
+    
+        <% } %>
+
+        <form action="/register" method="post">
+            
+            <!-- Name Field -->
+            <div class="name">
+                <label for="name">Name</label>
+                <% if (locals.user) { %>
+                    <input type="text" id="name" name="name" value=<%= user.name %>  required>
+                <% } else { %>
+                    <input type="text" id="name" name="name" required> 
+                <% } %> 
+            </div>
+
+            <!-- Email Field -->
+            <div class="email">
+                <label for="email">Email</label>
+                <% if (locals.user) { %>
+                    <input type="email" id="email" name="email" value=<%= user.email %>  required>
+                <% } else { %>
+                    <input type="email" id="email" name="email" required> 
+                <% } %> 
+            </div>
+
+            <!-- Password Field -->
+            <div class="password">
+                <label for="password">Password</label>
+                <% if (locals.user) { %>
+                    <input type="password" id="password" name="password" value=<%= user.password %>  required>
+                <% } else { %>
+                    <input type="password" id="password" name="password" required> 
+                <% } %> 
+            </div>
+
+            <!-- Re Password Field -->
+            <div class="re-password">
+                <label for="re-password">Retype-Password</label>
+                <% if (locals.user) { %>
+                    <input type="password" id="re-password" name="rePassword" value=<%= user.rePassword %>  required>
+                <% } else { %>
+                    <input type="password" id="re-password" name="rePassword" required> 
+                <% } %> 
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<%- include('./partials/footer.ejs')%> 
