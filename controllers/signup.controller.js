@@ -10,11 +10,25 @@ let authenticateNewUser = async (req, res) => {
         password: req.body.password,
     }
 
+        // Checking if user already with email from DB.
+    let userAleadyExist = false;
+
+    try {
+        let emailInDb = await userModel.getUserWithEmail(user.email);
+        if(emailInDb.length > 0) {
+            userAleadyExist = true
+        }
+    } catch (error) {
+        throw error
+    }
+    
+
+    
+    // ********************************** Verify New User With Various Checks ***************************************** //
+
     let error = "";
     let regExEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
-    // ********************************** Verify New User With Various Checks ***************************************** //
 
     // **** 1. Check if fields are empty ****
 
@@ -37,14 +51,21 @@ let authenticateNewUser = async (req, res) => {
         error = "Enter a valid email address.";
 
 
-        // **** 4. Check if length of PASSWORD is less than 8
+        // **** 4. Check if user already exist with given email.
+
+    } else if (userAleadyExist) {
+
+        error = "Email already taken.";
+
+
+        // **** 5. Check if length of PASSWORD is less than 8
 
     } else if (user.password.length < 8) {
 
         error = "Password must be of 8 characters or more"
 
 
-        // **** 5. Password doesn't match.
+        // **** 6. Password doesn't match.
 
     } else if (user.password !== req.body.rePassword) {
         error = "Password doesn't match."

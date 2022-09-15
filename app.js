@@ -7,12 +7,13 @@ app = express();
 // Dependencies (Modules)
 
 const session = require('express-session');
-const passport = require('passport')
+const passport = require('passport');
+const flash = require('express-flash');
 
 
 // MySQLStore Config
 
-const sessionStore = require('./config/mysql-session.config')
+const sessionStore = require('./config/mysql-session.config');
 
 
 // Set View Engine (EJS)
@@ -22,13 +23,16 @@ app.set('view-engine', 'ejs');
 
 // Static Files
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 
 // Express Body Praser
 
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: false}));
 
+// Flash To Display Messages
+
+app.use(flash());
 
 // Express-Session
 

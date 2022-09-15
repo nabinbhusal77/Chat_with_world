@@ -9,7 +9,7 @@ const userModel = require('../models/userModel');
 // Custom username and password (***name*** attribute in html)
 const customField = {
     usernameField: "email",
-    passwordField: "password"
+    passwordField: "password",
 }
 
 
@@ -20,14 +20,14 @@ const verfiyCallBack = (username, password, done) => {
     userModel.getUserWithEmail(username)
         .then(user => {
             
-            if(user.length === 0) return done(null, false);
+            if(user.length === 0) return done(null, false, {message: "User does not exist."});
 
 
             // Compare password with hashed from DB
 
             bcrypt.compare(password, user[0].password)
                 .then(result => {
-                    if (!result) return done(null, false);
+                    if (!result) return done(null, false, {message: "Password does not match."});
 
                     return done(null, user)
                 })

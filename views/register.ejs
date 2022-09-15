@@ -49,11 +49,7 @@
             <!-- Re Password Field -->
             <div class="re-password">
                 <label for="re-password">Retype-Password</label>
-                <% if (locals.user) { %>
-                    <input type="password" id="re-password" name="rePassword" value=<%= user.rePassword %>  required>
-                <% } else { %>
-                    <input type="password" id="re-password" name="rePassword" required> 
-                <% } %> 
+                <input type="password" id="re-password" name="rePassword" required> 
             </div>
 
             <button type="submit">Sign Up</button>

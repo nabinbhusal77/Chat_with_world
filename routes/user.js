@@ -25,7 +25,12 @@ router.get('/login', (req, res) => {
     res.render('login.ejs');
 })
 
-router.post('/login', passport.authenticate('local', {failureRedirect: "/login", successRedirect: "/welcome"}));
+router.post('/login', passport.authenticate('local', 
+{
+    failureRedirect: "/login", 
+    successRedirect: "/welcome", 
+    failureFlash: true
+}));
 
 
 
